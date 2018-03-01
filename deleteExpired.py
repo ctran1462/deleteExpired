@@ -45,13 +45,12 @@ for reservation in response["Reservations"]:
 	print(type(inID))
 	#to debug, getting error that one is a float
 	if(inExpDate <= now):
-		response = ec2client.terminate_instances(
-    InstanceIds=[
-        inID,
-    ],
-#    DryRun=True|False
-)
+		response = ec2client.terminate_instances(InstanceIds=[inID,],)
 		print("it is now, instance scheduled for deletion")
+	#else if (inExpDate == now + 5 days || inExpDate == now + 4 days || inExpDate == now + 3 days || inExpDate == now + 2 days || inExpDate == now + 1)
+	#432000 is the datetime float format's equivalent of 5 days
+	if (inExpDate <= (now + 432000)) :
+		print("this needs an emailin'")
 	else :
-		print("not now")
-	
+		print("Not now")
+	print (now + 345600)
