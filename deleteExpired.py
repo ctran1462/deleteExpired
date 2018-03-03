@@ -63,17 +63,6 @@ for reservation in response["Reservations"]:
 		SUBJECT = "Instance {}.".format(inID)
 		BODY_TEXT = ("This is a warning that instance {} is set to expire in 5 days or less.".format(inID))
 		CHARSET = "UTF-8"
-		BODY_HTML = """<html>
-<head></head>
-<body>
-  <h1>Amazon SES Test (SDK for Python)</h1>
-  <p>This email was sent with
-    <a href='https://aws.amazon.com/ses/'>Amazon SES</a> using the
-    <a href='https://aws.amazon.com/sdk-for-python/'>
-      AWS SDK for Python (Boto)</a>.</p>
-</body>
-</html>
-            """ 
 		try:
     			#Provide the contents of the email.
     			response = client.send_email(
